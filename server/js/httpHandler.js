@@ -12,6 +12,8 @@ module.exports.initialize = (queue) => {
   messageQueue = queue;
 };
 
+// const array = ['up', 'down', 'left', 'right'];
+
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
   res.writeHead(200, headers);
