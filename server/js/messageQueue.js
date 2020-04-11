@@ -10,4 +10,3 @@ module.exports.dequeue = () => {
   return messages.shift();
 };
 
-module.exports.messages = messages;

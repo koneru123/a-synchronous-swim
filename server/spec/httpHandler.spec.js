@@ -25,19 +25,15 @@ describe('server responses', () => {
 
   it('should respond to a GET request for a swim command', (done) => {
     let randomCommand = ['up', 'right', 'down', 'left'];
-    let randomItem = randomCommand[Math.floor(Math.random()*randomCommand.length)];
-    messagequeue.enqueue(randomItem);
-    console.log('PRIYA', messagequeue.messages);
-    // have the functionality of messageQueue in here
 
     let {req, res} = server.mock(`/`, 'GET');
-    // let findCommand = randomCommand.indexOf(command) !== -1
 
     httpHandler.router(req, res);
     expect(res._responseCode).to.equal(200);
     expect(res._ended).to.equal(true);
-    //expect(res._data.toString()).to.equal(randomItem); // check queue to see if it includes the random command created in line 27/28
-    expect(messagequeue.messages).to.include(randomItem);
+    // checking to see if command was responded
+    expect(randomCommand.includes(res._data.toString())).to.equal(true);
+
 
     done();
   });

@@ -10,14 +10,13 @@
       type: 'GET',
       url: serverUrl,
       cache: false,
-      data: command,
+      // data: command,
       success: (data) => {
-        console.log('successful!')
-        console.log(data);
-        SwimTeam.move(data)
+        SwimTeam.move(data);
       }
     });
   }
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
@@ -58,10 +57,8 @@
     ajaxFileUplaod(file);
   });
 
-  $('button').click(function(e) {
-    e.preventDefault();
-    ajaxFetch();
-  });
+  // set interval to regularly fetch messages
+  setInterval(ajaxFetch, 5000);
 
 })();
 
